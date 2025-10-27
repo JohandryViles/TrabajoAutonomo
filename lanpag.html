@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniAttend - Sistema de Asistencia Universitaria</title>
+    <link rel="stylesheet" href="styleslp.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="header-logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="logo-title">UniAttend</h1>
+                    <p class="logo-subtitle">Sistema de Asistencia</p>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="#dashboard" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#facultades" class="nav-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Facultades</span>
+                </a>
+            </nav>
+
+            <div class="header-actions">
+                <button id="myuser" class="btn btn-outline btn-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    Mi Perfil
+                </button>
+                <button id="logoutBtn" class="btn btn-outline btn-sm">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- Contenido principal -->
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1 class="hero-title">
+                                Sistema de Asistencia 
+                                <span class="text-primary">Universitaria</span>
+                            </h1>
+                            <p class="hero-description">
+                                Registro eficiente y confiable de asistencia para profesores universitarios. 
+                                Control de horarios, facultades y reportes en tiempo real.
+                            </p>
+                        </div>
+
+                        <div class="hero-buttons">
+                            <a href="#registro" class="btn btn-primary btn-lg">
+                                Registrar Asistencia
+                            </a>
+                            <a href="#dashboard" class="btn btn-outline btn-lg">
+                                Ver Dashboard
+                            </a>
+                        </div>
+
+                        <div class="hero-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </div>
+                                <p class="feature-text">Control de Horarios</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    </svg>
+                                </div>
+                                <p class="feature-text">Seguro y Confiable</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                    </svg>
+                                </div>
+                                <p class="feature-text">Reportes en Tiempo Real</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </div>
+                                <p class="feature-text">Multi-Facultad</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Imagen -->
+                    <div class="hero-image">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1680226425348-cedaf70ec06d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwY2FtcHVzJTIwYnVpbGRpbmd8ZW58MXx8fHwxNzU5NzQzMzE2fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Campus universitario">
+                            </div>
+                        </div>
+                        
+                        <!-- Overlay con información -->
+                        <div class="hero-overlay-card">
+                            <div class="card">
+                                <div class="card-content-sm">
+                                    <div class="overlay-content">
+                                        <div>
+                                            <h3>Horario Laboral</h3>
+                                            <p class="text-muted">Lunes a Viernes</p>
+                                        </div>
+                                        <div class="overlay-time">
+                                            <p class="time-display">7:00 AM - 6:00 PM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de registro -->
+        <section id="registro" class="section section-muted">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Registro de Asistencia</h2>
+                    <p class="section-description">
+                        Registra tu entrada y salida de manera rápida y sencilla. 
+                        Selecciona tu facultad y confirma tu presencia en el campus.
+                    </p>
+                </div>
+                
+                <div class="attendance-container">
+                    <!-- Tarjeta de asistencia -->
+                    <div class="card attendance-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                <span>Registro de Asistencia</span>
+                            </div>
+                            <p class="card-description" id="currentDate"></p>
+                            <div class="clock-section">
+                                <p class="clock-time" id="currentTime"></p>
+                                <span class="badge" id="statusBadge">Fuera del campus</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-content">
+                            <div class="form-group">
+                                <label>Facultad</label>
+                                <div class="select-wrapper">
+                                    <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <select id="facultySelect" class="select-input">
+                                        <option value="">Selecciona tu facultad</option>
+                                        <option value="Facultad de Ingeniería">Facultad de Ingeniería</option>
+                                        <option value="Facultad de Medicina">Facultad de Medicina</option>
+                                        <option value="Facultad de Derecho">Facultad de Derecho</option>
+                                        <option value="Facultad de Ciencias Económicas">Facultad de Ciencias Económicas</option>
+                                        <option value="Facultad de Humanidades">Facultad de Humanidades</option>
+                                        <option value="Facultad de Ciencias Exactas">Facultad de Ciencias Exactas</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="button-grid">
+                                <button id="entradaBtn" class="btn btn-primary">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                                        <polyline points="10 17 15 12 10 7"/>
+                                        <line x1="15" y1="12" x2="3" y2="12"/>
+                                    </svg>
+                                    <span>Entrada</span>
+                                </button>
+                                
+                                <button id="salidaBtn" class="btn btn-outline" disabled>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                        <polyline points="16 17 21 12 16 7"/>
+                                        <line x1="21" y1="12" x2="9" y2="12"/>
+                                    </svg>
+                                    <span>Salida</span>
+                                </button>
+                            </div>
+
+                            <div id="recordsContainer" class="records-container" style="display: none;">
+                                <h4 class="records-title">Registros de hoy:</h4>
+                                <div id="recordsList" class="records-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Dashboard de Asistencia</h2>
+                    <p class="section-description">
+                        Visualiza en tiempo real la asistencia de profesores por facultad, 
+                        estadísticas generales y actividad reciente del sistema.
+                    </p>
+                </div>
+                
+                <!-- Métricas generales -->
+                <div class="metrics-grid">
+                    <div class="card">
+                        <div class="metric-card">
+                            <div>
+                                <p class="metric-label">Total Profesores</p>
+                                <p class="metric-value">234</p>
+                            </div>
+                            <svg class="metric-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="metric-card">
+                            <div>
+                                <p class="metric-label">Presentes Hoy</p>
+                                <p class="metric-value metric-green">204</p>
+                            </div>
+                            <svg class="metric-icon metric-icon-green" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="metric-card">
+                            <div>
+                                <p class="metric-label">% Asistencia</p>
+                                <p class="metric-value">87%</p>
+                            </div>
+                            <svg class="metric-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="metric-card">
+                            <div>
+                                <p class="metric-label">Horario Actual</p>
+                                <p class="metric-value-sm">7:00 AM - 6:00 PM</p>
+                            </div>
+                            <svg class="metric-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asistencia por facultad -->
+                <div class="card dashboard-card">
+                    <div class="card-header-simple">
+                        <h3 class="card-title-simple">Asistencia por Facultad</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="faculty-grid">
+                            <!-- Ingeniería -->
+                            <div class="faculty-card">
+                                <div class="faculty-header">
+                                    <div class="faculty-dot faculty-blue"></div>
+                                    <h4 class="faculty-name">Facultad de Ingeniería</h4>
+                                </div>
+                                <div class="faculty-stats">
+                                    <div class="faculty-total">
+                                        <span>Total: 45</span>
+                                        <span>84%</span>
+                                    </div>
+                                    <div class="faculty-badges">
+                                        <span class="badge badge-primary">Presentes: 38</span>
+                                        <span class="badge badge-secondary">Ausentes: 7</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Medicina -->
+                            <div class="faculty-card">
+                                <div class="faculty-header">
+                                    <div class="faculty-dot faculty-green"></div>
+                                    <h4 class="faculty-name">Facultad de Medicina</h4>
+                                </div>
+                                <div class="faculty-stats">
+                                    <div class="faculty-total">
+                                        <span>Total: 52</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="faculty-badges">
+                                        <span class="badge badge-primary">Presentes: 47</span>
+                                        <span class="badge badge-secondary">Ausentes: 5</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Derecho -->
+                            <div class="faculty-card">
+                                <div class="faculty-header">
+                                    <div class="faculty-dot faculty-purple"></div>
+                                    <h4 class="faculty-name">Facultad de Derecho</h4>
+                                </div>
+                                <div class="faculty-stats">
+                                    <div class="faculty-total">
+                                        <span>Total: 28</span>
+                                        <span>86%</span>
+                                    </div>
+                                    <div class="faculty-badges">
+                                        <span class="badge badge-primary">Presentes: 24</span>
+                                        <span class="badge badge-secondary">Ausentes: 4</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ciencias Económicas -->
+                            <div class="faculty-card">
+                                <div class="faculty-header">
+                                    <div class="faculty-dot faculty-orange"></div>
+                                    <h4 class="faculty-name">Facultad de Ciencias Económicas</h4>
+                                </div>
+                                <div class="faculty-stats">
+                                    <div class="faculty-total">
+                                        <span>Total: 35</span>
+                                        <span>89%</span>
+                                    </div>
+                                    <div class="faculty-badges">
+                                        <span class="badge badge-primary">Presentes: 31</span>
+                                        <span class="badge badge-secondary">Ausentes: 4</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Humanidades -->
+                            <div class="faculty-card">
+                                <div class="faculty-header">
+                                    <div class="faculty-dot faculty-pink"></div>
+                                    <h4 class="faculty-name">Facultad de Humanidades</h4>
+                                </div>
+                                <div class="faculty-stats">
+                                    <div class="faculty-total">
+                                        <span>Total: 41</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="faculty-badges">
+                                        <span class="badge badge-primary">Presentes: 35</span>
+                                        <span class="badge badge-secondary">Ausentes: 6</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ciencias Exactas -->
+                            <div class="faculty-card">
+                                <div class="faculty-header">
+                                    <div class="faculty-dot faculty-cyan"></div>
+                                    <h4 class="faculty-name">Facultad de Ciencias Exactas</h4>
+                                </div>
+                                <div class="faculty-stats">
+                                    <div class="faculty-total">
+                                        <span>Total: 33</span>
+                                        <span>88%</span>
+                                    </div>
+                                    <div class="faculty-badges">
+                                        <span class="badge badge-primary">Presentes: 29</span>
+                                        <span class="badge badge-secondary">Ausentes: 4</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actividad reciente -->
+                <div class="card dashboard-card">
+                    <div class="card-header-simple">
+                        <h3 class="card-title-simple">Actividad Reciente</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-name">Dr. María González</p>
+                                    <p class="activity-faculty">Facultad de Ingeniería</p>
+                                </div>
+                                <div class="activity-actions">
+                                    <span class="badge badge-primary">Entrada</span>
+                                    <span class="activity-time">08:15</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-name">Prof. Andres Cobeña</p>
+                                    <p class="activity-faculty">Facultad de Ingeniería</p>
+                                </div>
+                                <div class="activity-actions">
+                                    <span class="badge badge-primary">Entrada</span>
+                                    <span class="activity-time">10:00</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-name">Dra. Ana Martínez</p>
+                                    <p class="activity-faculty">Facultad de Derecho</p>
+                                </div>
+                                <div class="activity-actions">
+                                    <span class="badge badge-primary">Entrada</span>
+                                    <span class="activity-time">09:30</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-name">Prof. Luis Pérez</p>
+                                    <p class="activity-faculty">Facultad de Económicas</p>
+                                </div>
+                                <div class="activity-actions">
+                                    <span class="badge badge-primary">Entrada</span>
+                                    <span class="activity-time">07:45</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-name">Dr. Sofia López</p>
+                                    <p class="activity-faculty">Facultad de Humanidades</p>
+                                </div>
+                                <div class="activity-actions">
+                                    <span class="badge badge-outline">Salida</span>
+                                    <span class="activity-time">16:30</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información de facultades -->
+        <section id="facultades" class="section section-muted">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Facultades Registradas</h2>
+                    <p class="section-description">
+                        Sistema integrado con todas las facultades de la universidad. 
+                        Cada profesor puede registrar su asistencia según su facultad asignada.
+                    </p>
+                </div>
+                
+                <div class="faculties-grid">
+                    <div class="faculty-info-card">
+                        <div class="faculty-info-icon">
+                            <div class="icon-placeholder"></div>
+                        </div>
+                        <h3>Facultad de Ingeniería</h3>
+                        <p class="text-muted">Sistema de control de asistencia activo</p>
+                    </div>
+
+                    <div class="faculty-info-card">
+                        <div class="faculty-info-icon">
+                            <div class="icon-placeholder"></div>
+                        </div>
+                        <h3>Facultad de Medicina</h3>
+                        <p class="text-muted">Sistema de control de asistencia activo</p>
+                    </div>
+
+                    <div class="faculty-info-card">
+                        <div class="faculty-info-icon">
+                            <div class="icon-placeholder"></div>
+                        </div>
+                        <h3>Facultad de Derecho</h3>
+                        <p class="text-muted">Sistema de control de asistencia activo</p>
+                    </div>
+
+                    <div class="faculty-info-card">
+                        <div class="faculty-info-icon">
+                            <div class="icon-placeholder"></div>
+                        </div>
+                        <h3>Facultad de Ciencias Económicas</h3>
+                        <p class="text-muted">Sistema de control de asistencia activo</p>
+                    </div>
+
+                    <div class="faculty-info-card">
+                        <div class="faculty-info-icon">
+                            <div class="icon-placeholder"></div>
+                        </div>
+                        <h3>Facultad de Humanidades</h3>
+                        <p class="text-muted">Sistema de control de asistencia activo</p>
+                    </div>
+
+                    <div class="faculty-info-card">
+                        <div class="faculty-info-icon">
+                            <div class="icon-placeholder"></div>
+                        </div>
+                        <h3>Facultad de Ciencias Exactas</h3>
+                        <p class="text-muted">Sistema de control de asistencia activo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">UniAttend</h3>
+                    <p class="footer-text">
+                        Sistema de registro de asistencia para profesores universitarios. 
+                        Confiable, eficiente y fácil de usar.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-subtitle">Características</h4>
+                    <ul class="footer-list">
+                        <li>Registro de entrada y salida</li>
+                        <li>Control por facultades</li>
+                        <li>Horario laboral 7:00 AM - 5:00 PM</li>
+                        <li>Reportes en tiempo real</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-subtitle">Soporte</h4>
+                    <ul class="footer-list">
+                        <li>Ayuda técnica</li>
+                        <li>Manual de usuario</li>
+                        <li>Contacto administrativo</li>
+                        <li>Reportar problemas</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2024 UniAttend. Sistema de Asistencia Universitaria.
+            </div>
+        </div>
+    </footer>
+
+    <script src="scriptlp.js"></script>
+</body>
+</html>
