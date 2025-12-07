@@ -122,7 +122,7 @@ function renderRecords() {
 function addActivityToRecent(record) {
   const activityList = document.querySelector(".activity-list");
   if (!activityList) return;
-
+//Aqui simulamos el LocalStorage del navegador con un nombre por defecto (Basado en el correo)
   const userName =
     sessionStorage.getItem("userName") ||
     sessionStorage.getItem("userEmail") ||
