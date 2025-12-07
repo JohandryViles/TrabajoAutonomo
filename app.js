@@ -565,6 +565,22 @@ function renderReportsView() {
                             </svg>
                             Exportar a Excel
                         </button>
+                        <button class="btn btn-outline" onclick="exportarJSON()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Exportar a JSON
+                        </button>
+                        <button class="btn btn-outline" onclick="exportarXML()">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Exportar a XML
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1192,4 +1208,80 @@ if (backtBtn) {
   backtBtn.addEventListener("click", function () {
     window.location.href = "lanpag.html";
   });
+}
+// EXPORTAR JSON
+function exportarJSON() {
+    const data = {
+        usuarios: state.users,
+        facultades: state.faculties,
+        historialAsistencia: state.attendanceHistory
+    };
+
+    const jsonString = JSON.stringify(data, null, 4);
+
+    const blob = new Blob([jsonString], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "reporte.json";
+    a.click();
+    URL.revokeObjectURL(url);
+
+    showToast("Archivo JSON exportado correctamente");
+}
+
+// EXPORTAR XML
+function exportarXML() {
+    let xml = `<reporte>\n`;
+
+    xml += `  <usuarios>\n`;
+    state.users.forEach(u => {
+        xml += `    <usuario>\n`;
+        xml += `      <id>${u.id}</id>\n`;
+        xml += `      <nombre>${u.nombre}</nombre>\n`;
+        xml += `      <correo>${u.correo}</correo>\n`;
+        xml += `      <facultad>${u.facultad}</facultad>\n`;
+        xml += `      <rol>${u.rol}</rol>\n`;
+        xml += `      <estado>${u.estado}</estado>\n`;
+        xml += `    </usuario>\n`;
+    });
+    xml += `  </usuarios>\n`;
+
+    xml += `  <facultades>\n`;
+    state.faculties.forEach(f => {
+        xml += `    <facultad>\n`;
+        xml += `      <id>${f.id}</id>\n`;
+        xml += `      <nombre>${f.nombre}</nombre>\n`;
+        xml += `      <codigo>${f.codigo}</codigo>\n`;
+        xml += `      <descripcion>${f.descripcion}</descripcion>\n`;
+        xml += `      <docentes>${f.docentes}</docentes>\n`;
+        xml += `    </facultad>\n`;
+    });
+    xml += `  </facultades>\n`;
+
+    xml += `  <historialAsistencia>\n`;
+    state.attendanceHistory.forEach(h => {
+        xml += `    <registro>\n`;
+        xml += `      <fecha>${h.fecha}</fecha>\n`;
+        xml += `      <entrada>${h.entrada}</entrada>\n`;
+        xml += `      <salida>${h.salida}</salida>\n`;
+        xml += `      <horas>${h.horas}</horas>\n`;
+        xml += `      <estado>${h.estado}</estado>\n`;
+        xml += `    </registro>\n`;
+    });
+    xml += `  </historialAsistencia>\n`;
+
+    xml += `</reporte>`;
+
+    const blob = new Blob([xml], { type: "application/xml" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "reporte.xml";
+    a.click();
+    URL.revokeObjectURL(url);
+
+    showToast("Archivo XML exportado correctamente");
 }
